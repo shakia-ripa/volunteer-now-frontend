@@ -21,6 +21,7 @@ import EventDetails from './components/EventDetails/EventDetails.jsx';
 import ApplyForm from './pages/ApplyForm/ApplyForm.jsx';
 import AppliedList from './pages/Admin/AppliedList/AppliedList.jsx';
 import UserList from './pages/Admin/UserList/UserList.jsx';
+import ApplicantDetails from './pages/Admin/ApplicantDetails/ApplicantDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
       {
         path: '/admin/user-list',
         element: <UserList></UserList>
+      },
+      {
+        path: '/admin/applied-list/applicant-details/:id',
+        element: <ApplicantDetails></ApplicantDetails>
       }
 
     ]

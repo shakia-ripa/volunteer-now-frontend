@@ -10,23 +10,12 @@ const UserList = () => {
             <h2 className="bg-white pl-8 py-4 text-2xl font-medium">Users List</h2>
             <div className='bg-[#edeff2] rounded-tl-md lg:h-[89%] px-10 pt-3'>
                 <div className='bg-white px-5 py-5 mt-7 rounded-xl'>
-                    <div className='grid grid-cols-5 bg-[#F5F6FA] px-7 py-2 rounded-xl'>
-                        <p>Name</p>
-                        <p>Email ID</p>
-                        <p>Registating date</p>
-                        <p>Volunteer list</p>
-                        <p>Action</p>
-                    </div>
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}
                             <thead>
                                 <tr>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox" />
-                                        </label>
-                                    </th>
+
                                     <th>Name</th>
                                     <th>Job</th>
                                     <th>Favorite Color</th>
@@ -36,11 +25,7 @@ const UserList = () => {
                             <tbody>
                                 {/* row 1 */}
                                 <tr>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox" />
-                                        </label>
-                                    </th>
+
                                     <td>
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
@@ -68,11 +53,7 @@ const UserList = () => {
                                 </tr>
                                 {/* row 2 */}
                                 <tr>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox" />
-                                        </label>
-                                    </th>
+
                                     <td>
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
@@ -100,11 +81,7 @@ const UserList = () => {
                                 </tr>
                                 {/* row 3 */}
                                 <tr>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox" />
-                                        </label>
-                                    </th>
+
                                     <td>
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
@@ -132,11 +109,7 @@ const UserList = () => {
                                 </tr>
                                 {/* row 4 */}
                                 <tr>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox" />
-                                        </label>
-                                    </th>
+
                                     <td>
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
@@ -163,16 +136,6 @@ const UserList = () => {
                                     </th>
                                 </tr>
                             </tbody>
-                            {/* foot */}
-                            <tfoot>
-                                <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Job</th>
-                                    <th>Favorite Color</th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
