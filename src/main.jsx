@@ -22,6 +22,7 @@ import ApplyForm from './pages/ApplyForm/ApplyForm.jsx';
 import AppliedList from './pages/Admin/AppliedList/AppliedList.jsx';
 import UserList from './pages/Admin/UserList/UserList.jsx';
 import ApplicantDetails from './pages/Admin/ApplicantDetails/ApplicantDetails.jsx';
+import BlogDetail from './pages/BlogDetails/BlogDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,12 @@ const router = createBrowserRouter([
       {
         path: '/event/:id',
         element: <EventDetails></EventDetails>
+      },
+      {
+        path: '/blog/:id',
+        element: <BlogDetail></BlogDetail>
       }
+
     ]
   },
   {
