@@ -1,9 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
-const VolunteerRegister = () => {
+const UserList = () => {
     return (
         <div className='h-full'>
-            <h2 className="bg-white pl-8 py-4 text-2xl font-medium">Volunteer Register List</h2>
+            <Helmet>
+                <title>VolunteerNow | Users</title>
+            </Helmet>
+            <h2 className="bg-white pl-8 py-4 text-2xl font-medium">Users List</h2>
             <div className='bg-[#edeff2] rounded-tl-md lg:h-[89%] px-10 pt-3'>
                 <div className='bg-white px-5 py-5 mt-7 rounded-xl'>
                     <div className='grid grid-cols-5 bg-[#F5F6FA] px-7 py-2 rounded-xl'>
@@ -178,4 +182,4 @@ const VolunteerRegister = () => {
     );
 };
 
-export default VolunteerRegister;
+export default UserList;

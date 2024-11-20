@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
-import { BsCloudArrowUp } from "react-icons/bs";
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const AddEvent = () => {
 
@@ -61,6 +61,9 @@ const AddEvent = () => {
 
     return (
         <div className='h-full'>
+            <Helmet>
+                <title>VolunteerNow | Add Event</title>
+            </Helmet>
             <h2 className="bg-white pl-8 py-4 text-2xl font-medium">Add Event</h2>
             <div className='bg-[#edeff2] rounded-tl-md px-10 pt-3'>
                 <div className='bg-white px-9 py-5 mt-7 rounded-xl'>

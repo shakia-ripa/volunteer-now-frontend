@@ -14,12 +14,13 @@ import Blog from './pages/Blog/Blog.jsx';
 import Login from './pages/Login/Login.jsx';
 import Register from './pages/Register/Register.jsx';
 import Admin from './pages/Admin/Admin/Admin.jsx';
-import VolunteerRegister from './pages/Admin/VolunteerRegister/VolunteerRegister.jsx';
 import AddEvent from './pages/Admin/AddEvent/AddEvent.jsx';
 import { HelmetProvider } from 'react-helmet-async';
 import EventList from './pages/Admin/EventList/EventList.jsx';
 import EventDetails from './components/EventDetails/EventDetails.jsx';
 import ApplyForm from './pages/ApplyForm/ApplyForm.jsx';
+import AppliedList from './pages/Admin/AppliedList/AppliedList.jsx';
+import UserList from './pages/Admin/UserList/UserList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -73,9 +74,13 @@ const router = createBrowserRouter([
         element: <EventList></EventList>
       },
       {
-        path: '/admin/volunteer-register',
-        element: <VolunteerRegister></VolunteerRegister>
+        path: '/admin/applied-list',
+        element: <AppliedList></AppliedList>
       },
+      {
+        path: '/admin/user-list',
+        element: <UserList></UserList>
+      }
 
     ]
   }

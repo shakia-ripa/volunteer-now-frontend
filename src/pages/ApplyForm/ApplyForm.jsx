@@ -1,8 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const ApplyForm = () => {
     return (
         <div class="max-w-2xl mx-auto p-8 bg-gradient-to-r from-lime-50 to-lime-100 rounded-2xl shadow-2xl">
+            <Helmet>
+                <title>VolunteerNow | Apply Form</title>
+            </Helmet>
             <h2 class="text-4xl font-extrabold text-center text-lime-600 mb-8">Volunteer Application Form</h2>
 
             <form action="#" method="POST" class="space-y-8">

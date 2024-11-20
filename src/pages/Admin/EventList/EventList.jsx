@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FaEdit } from "react-icons/fa";
+import { Helmet } from 'react-helmet-async';
 
 const EventList = () => {
 
@@ -21,9 +22,12 @@ const EventList = () => {
 
     return (
         <div className='h-full'>
+            <Helmet>
+                <title>VolunteerNow | Events</title>
+            </Helmet>
             <h2 className="bg-white pl-8 py-4 text-2xl font-medium">Event List</h2>
-            <div className='bg-[#edeff2] rounded-tl-md lg:h-[89%] px-10 pt-3'>
-                <div className="overflow-x-auto bg-white">
+            <div className='bg-[#edeff2] rounded-tl-md lg:h-[89%] px-10 pt-8'>
+                <div className="overflow-x-auto bg-white rounded-md p-3">
                     <table className="table table-fixed w-full">
                         {/* head */}
                         <thead>

@@ -35,13 +35,22 @@ const Admin = () => {
                         Event list
                     </NavLink>
                     <NavLink
-                        to='/admin/volunteer-register'
+                        to='/admin/user-list'
                         className={({ isActive }) =>
                             `flex items-center gap-2 ${isActive ? "font-bold text-blue-400" : ""}`
                         }
                     >
                         <IoPeopleOutline />
-                        Volunteer register list
+                        User list
+                    </NavLink>
+                    <NavLink
+                        to='/admin/applied-list'
+                        className={({ isActive }) =>
+                            `flex items-center gap-2 ${isActive ? "font-bold text-blue-400" : ""}`
+                        }
+                    >
+                        <IoPeopleOutline />
+                        Applied list
                     </NavLink>
 
                 </div>
