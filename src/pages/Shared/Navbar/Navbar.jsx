@@ -18,6 +18,7 @@ const Navbar = () => {
         <li><NavLink className={({ isActive }) =>
             isActive ? "border-2 border-lime-600 text-lime-600 font-bold" : ''
         } to='/blog'>Blog</NavLink></li>
+        
     </>
 
 

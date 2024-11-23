@@ -1,7 +1,32 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import api from '../../../Routes/baseApi';
 
 const UserList = () => {
+
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get('/user',
+                    {
+                        headers: {
+                            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzMyZjdjNWZiY2M4ZGIyNWI3OWNiNWEiLCJlbWFpbCI6ImFkbWluLmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczMjM0ODU0NCwiZXhwIjoxNzMyMzUyMTQ0fQ.M2-ZTHSA_85DFKUUcezgRPSGtQZOSHcQTVYn7W_uWL0', // Add token here
+                        }
+                    }
+                );
+                console.log(response);
+                setUsers(response.data.data)
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+    console.log(users);
+
     return (
         <div className='h-full'>
             <Helmet>
@@ -17,124 +42,43 @@ const UserList = () => {
                                 <tr>
 
                                     <th>Name</th>
-                                    <th>Job</th>
-                                    <th>Favorite Color</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Location</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* row 1 */}
-                                <tr>
+                                {
+                                    users.map((user, index) => {
+                                        return (
+                                            <tr>
+                                                <td>
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="avatar">
+                                                            <div className="mask mask-squircle h-12 w-12">
+                                                                <img
+                                                                    src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                                                                    alt="Avatar Tailwind CSS Component" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="font-bold">{user.name}</div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    {user.email}
+                                                </td>
+                                                <td>{user.phoneNumber}</td>
+                                                <td>{user.division}</td>
+                                                <th>
+                                                    <button className="btn btn-ghost btn-xs">details</button>
+                                                </th>
+                                            </tr>
+                                        )
+                                    })
+                                }
 
-                                    <td>
-                                        <div className="flex items-center gap-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle h-12 w-12">
-                                                    <img
-                                                        src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                                                        alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Zemlak, Daniel and Leannon
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                                    </td>
-                                    <td>Purple</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
-                                    </th>
-                                </tr>
-                                {/* row 2 */}
-                                <tr>
 
-                                    <td>
-                                        <div className="flex items-center gap-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle h-12 w-12">
-                                                    <img
-                                                        src="https://img.daisyui.com/images/profile/demo/3@94.webp"
-                                                        alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Brice Swyre</div>
-                                                <div className="text-sm opacity-50">China</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Carroll Group
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Tax Accountant</span>
-                                    </td>
-                                    <td>Red</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
-                                    </th>
-                                </tr>
-                                {/* row 3 */}
-                                <tr>
-
-                                    <td>
-                                        <div className="flex items-center gap-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle h-12 w-12">
-                                                    <img
-                                                        src="https://img.daisyui.com/images/profile/demo/4@94.webp"
-                                                        alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Marjy Ferencz</div>
-                                                <div className="text-sm opacity-50">Russia</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Rowe-Schoen
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Office Assistant I</span>
-                                    </td>
-                                    <td>Crimson</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
-                                    </th>
-                                </tr>
-                                {/* row 4 */}
-                                <tr>
-
-                                    <td>
-                                        <div className="flex items-center gap-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle h-12 w-12">
-                                                    <img
-                                                        src="https://img.daisyui.com/images/profile/demo/5@94.webp"
-                                                        alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Yancy Tear</div>
-                                                <div className="text-sm opacity-50">Brazil</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Wyman-Ledner
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Community Outreach Specialist</span>
-                                    </td>
-                                    <td>Indigo</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
-                                    </th>
-                                </tr>
                             </tbody>
                         </table>
                     </div>

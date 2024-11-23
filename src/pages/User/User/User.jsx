@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
-import { IoPeopleOutline } from "react-icons/io5";
-import { IoMdAdd } from "react-icons/io";
-import { MdOutlineEventRepeat } from "react-icons/md";
+import { MdEventRepeat } from "react-icons/md";
 import { Helmet } from 'react-helmet-async';
 
 const User = () => {
@@ -22,7 +20,7 @@ const User = () => {
                             `flex items-center gap-2 ${isActive ? "font-bold text-blue-400" : ""}`
                         }
                     >
-                        <IoMdAdd />
+                        <MdEventRepeat className='w-5 h-5' />
                         My Events
                     </NavLink>
 
