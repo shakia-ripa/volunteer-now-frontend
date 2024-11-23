@@ -16,7 +16,7 @@ const AboutUs = () => {
                             backgroundImage: "url('https://plus.unsplash.com/premium_photo-1681505195930-388c317b7a76?q=80&w=1984&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
                         }}
                     >
-                        <div className="rounded-lg absolute inset-0 bg-black opacity-50"></div> {/* Dark overlay for contrast */}
+                        <div className="rounded-lg absolute inset-0 bg-black opacity-60"></div> {/* Dark overlay for contrast */}
                         <div className="relative z-10 px-6">
                             <h1 className="text-4xl font-extrabold text-white mb-4">About Us</h1>
                             <p className="text-lg text-white">

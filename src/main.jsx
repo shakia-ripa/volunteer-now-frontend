@@ -23,6 +23,8 @@ import AppliedList from './pages/Admin/AppliedList/AppliedList.jsx';
 import UserList from './pages/Admin/UserList/UserList.jsx';
 import ApplicantDetails from './pages/Admin/ApplicantDetails/ApplicantDetails.jsx';
 import BlogDetail from './pages/BlogDetails/BlogDetails.jsx';
+import User from './pages/User/User/User.jsx';
+import MyEvents from './pages/User/MyEvents/MyEvents.jsx';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
       {
         path: '/blog',
         element: <Blog></Blog>
-      }, 
+      },
       {
         path: '/event/:id',
         element: <EventDetails></EventDetails>
@@ -65,7 +67,7 @@ const router = createBrowserRouter([
     element: <Register></Register>
   },
   {
-    path: '/apply-form',
+    path: '/apply-form/:eventId',
     element: <ApplyForm></ApplyForm>
   },
   {
@@ -93,6 +95,16 @@ const router = createBrowserRouter([
         element: <ApplicantDetails></ApplicantDetails>
       }
 
+    ]
+  },
+  {
+    path: '/user',
+    element: <User></User>,
+    children: [
+      {
+        path: '/user/my-events',
+        element: <MyEvents></MyEvents>
+      }
     ]
   }
 ]);

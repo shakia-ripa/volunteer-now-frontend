@@ -7,7 +7,8 @@ const ApplicantDetails = () => {
 
     const { id } = useParams();
     console.log(id);
-    // const [user, setUser] = useState(null);
+    const [user, setUser] = useState(null);
+    const [booking, setBooking] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -15,9 +16,11 @@ const ApplicantDetails = () => {
         const fetchEventData = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/booking/${id}`);
+                const { data } = response.data
                 console.log(response);
-                // setUser(response.data.data);
-                console.log(response.data.data);
+                setBooking(data);
+                const userData = data.userId;
+                setUser(userData);
                 setLoading(false);
             } catch (err) {
                 setError('Error fetching data');
@@ -35,15 +38,6 @@ const ApplicantDetails = () => {
     if (error) {
         return <div className="text-center mt-10 text-lg font-medium text-red-500">{error}</div>;
     }
-    const user = {
-        name: "Ahmed Khan",
-        email: "ahmedkhan@example.com",
-        phoneNumber: "+92 323 1234567",
-        emergencyContactNo: "+92 300 1234567",
-        volunteerExperience: "Organized community clean-up drives and participated in local charity events.",
-        whyDoYouWantToVolunteer:
-            "I want to make a positive impact in my community and contribute to meaningful causes.",
-    };
 
     return (
         <div>
@@ -67,15 +61,15 @@ const ApplicantDetails = () => {
                         </div>
                         <div className="flex justify-between items-center">
                             <h3 className="text-lg font-semibold text-gray-600">Emergency Contact:</h3>
-                            <p className="text-lg text-gray-800">{user.emergencyContactNo}</p>
+                            <p className="text-lg text-gray-800">{booking.emergencyContactNo}</p>
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold text-gray-600">Volunteer Experience:</h3>
-                            <p className="mt-2 text-gray-800">{user.volunteerExperience}</p>
+                            <p className="mt-2 text-gray-800">{booking.volunteerExperience}</p>
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold text-gray-600">Why Do You Want to Volunteer?</h3>
-                            <p className="mt-2 text-gray-800">{user.whyDoYouWantToVolunteer}</p>
+                            <p className="mt-2 text-gray-800">{booking.whyDoYouWantToVolunteer}</p>
                         </div>
                     </div>
                     <div className="flex justify-between items-center bg-gray-50 p-6">

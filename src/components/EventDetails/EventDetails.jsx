@@ -39,7 +39,7 @@ const EventDetails = () => {
         return <div className="text-center mt-10 text-lg font-medium text-red-500">{error}</div>;
     }
 
-    const { eventTitle, description, eventLocation, eventDate, time, imageURL, numOfVolunteers } = event;
+    const {_id, eventTitle, description, eventLocation, eventDate, time, imageURL, numOfVolunteers } = event;
     const date = new Date(eventDate);
     const formattedDate = date.toLocaleDateString('en-GB');
 
@@ -81,7 +81,7 @@ const EventDetails = () => {
             </div>
 
             <div className='mt-6'>
-                <Link to='/apply-form'>
+                <Link to={`/apply-form/${_id}`}>
                     <button className="bg-lime-600 hover:bg-lime-700 text-white md:text-lg font-bold py-3 px-6 rounded-lg transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl">
                         Apply Now
                     </button>
