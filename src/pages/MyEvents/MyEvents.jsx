@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import api from '../../../Routes/baseApi';
+import api from '../../Routes/baseApi';
 
 const MyEvents = () => {
 

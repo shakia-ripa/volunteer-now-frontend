@@ -13,7 +13,7 @@ const BlogDetail = () => {
             author: "Sarah Khan",
             date: "March 15, 2024",
             content: `Volunteering is one of the most rewarding activities one can participate in. It’s an opportunity to give back to the community, make meaningful connections, and impact lives. In this blog, we dive deep into how volunteering can help build stronger communities and how even small efforts can lead to big changes in society. Through volunteering, you can help individuals in need, support local charities, and contribute to causes that are close to your heart.`,
-            imageUrl: "https://via.placeholder.com/1200x600",
+            imageUrl: "https://plus.unsplash.com/premium_photo-1683134047656-27f9d72f3f87?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         },
         {
             id: "2",
@@ -21,7 +21,7 @@ const BlogDetail = () => {
             author: "Ahmed Khan",
             date: "March 10, 2024",
             content: `Charity events are an excellent way to make a direct impact in your community. Whether it’s a fundraising run, a food drive, or a charity auction, local events offer countless opportunities for you to get involved and help others. In this post, we’ll guide you on how to identify charity events in your area and how to participate or volunteer at these events to maximize your contribution to meaningful causes.`,
-            imageUrl: "https://via.placeholder.com/1200x600",
+            imageUrl: "https://plus.unsplash.com/premium_photo-1664300347812-00e2b09646c5?q=80&w=2116&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         },
         {
             id: "3",
@@ -29,7 +29,7 @@ const BlogDetail = () => {
             author: "Zainab Ali",
             date: "February 28, 2024",
             content: `With environmental issues such as climate change and pollution becoming more urgent, volunteering for environmental conservation is more important than ever. In this blog post, we explore various volunteer opportunities that allow individuals to contribute towards the protection of our planet. From organizing local clean-ups to volunteering with global conservation efforts, we’ll cover the many ways you can make a difference.`,
-            imageUrl: "https://via.placeholder.com/1200x600",
+            imageUrl: "https://images.unsplash.com/photo-1616680214084-22670de1bc82?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         },
     ];
 
