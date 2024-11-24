@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import api from '../../Routes/baseApi';
+import AuthService from '../../Utils/auth.utils';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import DashboardNav from '../Shared/DashboardNav/DashboardNav';
 
 const MyEvents = () => {
+
+    const { user, setUser } = useContext(AuthContext);
+    console.log(user);
+    const navigate = useNavigate();
 
     const [bookings, setBookings] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get('/booking/my-events',
-                    {
-                        headers: {
-                            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzMyNDIwMmEwZWM1MjQzOTgzZTdiYWIiLCJlbWFpbCI6ImphbmUuZG9lQGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MzIzNjczMzMsImV4cCI6MTczMjM3MDkzM30.8CkjMlej4nKqiXQS4s5gzvYtYGcg5ALVpSojlznQi8M', // Add token here
-                        }
-                    }
-                );
+                const response = await api.get('/booking/my-events');
                 console.log(response.data.data);
                 const { data } = response.data
                 console.log(data);
@@ -27,14 +29,21 @@ const MyEvents = () => {
         fetchData();
 
     }, []);
-    console.log(bookings.length);
+
+
+    const handleLogout = () => {
+        AuthService.logOut();
+        setUser(null)
+        navigate('/')
+    }
 
     return (
         <div className='h-full'>
             <Helmet>
                 <title>VolunteerNow | My Event</title>
             </Helmet>
-            <h2 className="bg-white pl-8 py-4 text-2xl font-medium">My Events</h2>
+            <DashboardNav title={'Applied Events'} handleLogout={handleLogout}></DashboardNav>
+
             <div className='bg-[#edeff2] rounded-tl-md px-7 py-7'>
 
                 <div className="overflow-x-auto shadow-md rounded-lg">

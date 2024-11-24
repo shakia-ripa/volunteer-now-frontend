@@ -1,21 +1,26 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaEye } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import api from '../../../Routes/baseApi';
 import Swal from 'sweetalert2';
+import DashboardNav from '../../Shared/DashboardNav/DashboardNav';
+import AuthService from '../../../Utils/auth.utils';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const AppliedList = () => {
     const [bookings, setBookings] = useState([]);
+    const { setUser } = useContext(AuthContext)
+    const navigate = useNavigate();
 
     // Fetch bookings on component mount
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/booking');
+                const response = await api.get('/booking');
                 setBookings(response.data.data);
-                console.log(response.data.data);
+                console.log(response);
             } catch (error) {
                 console.error('Error fetching bookings:', error);
             }
@@ -40,7 +45,7 @@ const AppliedList = () => {
                 title: "Status updated successfully!",
                 showConfirmButton: false,
                 timer: 1500
-              });
+            });
 
             // Update state with the new status
             setBookings((prevBookings) =>
@@ -56,16 +61,22 @@ const AppliedList = () => {
                 title: "Failed to update status.",
                 showConfirmButton: false,
                 timer: 1500
-              });
+            });
         }
     };
+
+    const handleLogout = () => {
+        AuthService.logOut();
+        setUser(null)
+        navigate('/')
+    }
 
     return (
         <div className="h-full">
             <Helmet>
                 <title>VolunteerNow | Applied</title>
             </Helmet>
-            <h2 className="bg-white pl-8 py-4 text-2xl font-medium">Applied List</h2>
+            <DashboardNav title={'Applied List'} handleLogout={handleLogout}></DashboardNav>
             <div className="bg-[#edeff2] rounded-tl-md lg:h-[89%] px-10 pt-3">
                 <div className="bg-white px-5 py-5 mt-7 rounded-xl">
                     <div className="overflow-x-auto bg-white rounded-md">

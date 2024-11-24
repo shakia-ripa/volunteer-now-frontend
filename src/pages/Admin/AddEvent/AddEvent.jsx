@@ -1,9 +1,15 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
+import DashboardNav from '../../Shared/DashboardNav/DashboardNav';
+import AuthService from '../../../Utils/auth.utils';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const AddEvent = () => {
+    const { setUser } = useContext(AuthContext)
+    const navigate = useNavigate();
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -50,13 +56,17 @@ const AddEvent = () => {
             Swal.fire({
                 position: "top-end",
                 icon: "error",
-                title:  error.message,
+                title: error.message,
                 showConfirmButton: false,
                 timer: 1500
             });
         }
+    }
 
-
+    const handleLogout = () => {
+        AuthService.logOut();
+        setUser(null)
+        navigate('/')
     }
 
     return (
@@ -64,7 +74,7 @@ const AddEvent = () => {
             <Helmet>
                 <title>VolunteerNow | Add Event</title>
             </Helmet>
-            <h2 className="bg-white pl-8 py-4 text-2xl font-medium">Add Event</h2>
+            <DashboardNav title={'Add Event'} handleLogout={handleLogout}></DashboardNav>
             <div className='bg-[#edeff2] rounded-tl-md px-10 pt-3'>
                 <div className='bg-white px-9 py-5 mt-7 rounded-xl'>
                     <form onSubmit={handleSubmit} className=' '>

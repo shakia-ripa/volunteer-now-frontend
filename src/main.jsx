@@ -24,6 +24,9 @@ import UserList from './pages/Admin/UserList/UserList.jsx';
 import ApplicantDetails from './pages/Admin/ApplicantDetails/ApplicantDetails.jsx';
 import User from './pages/User/User/User.jsx';
 import MyEvents from './pages/MyEvents/MyEvents.jsx';
+import AuthProvider from './Providers/AuthProvider.jsx';
+import Unauthorized from './components/Unauthorized/Unauthorized.jsx';
+import PrivateRoute from './Routes/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -61,6 +64,7 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login></Login>
   },
+   
   {
     path: '/register',
     element: <Register></Register>
@@ -71,7 +75,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <Admin></Admin>,
+    element: <PrivateRoute requiredRole='admin'><Admin></Admin></PrivateRoute>,
     children: [
       {
         path: '/admin/add-event',
@@ -98,20 +102,26 @@ const router = createBrowserRouter([
   },
   {
     path: '/user',
-    element: <User></User>,
+    element: <PrivateRoute requiredRole='user'><User></User></PrivateRoute>,
     children: [
       {
         path: '/user/my-events',
         element: <MyEvents></MyEvents>
       }
     ]
+  },
+  {
+    path: '/unauthorized',
+    element: <Unauthorized></Unauthorized>
   }
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HelmetProvider>
-      <RouterProvider router={router} />
-    </HelmetProvider>
+    <AuthProvider>
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
+    </AuthProvider>
   </StrictMode>,
 )

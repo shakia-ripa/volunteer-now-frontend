@@ -1,15 +1,23 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaEdit } from "react-icons/fa";
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
+import DashboardNav from '../../Shared/DashboardNav/DashboardNav';
+import AuthService from '../../../Utils/auth.utils';
+import { AuthContext } from '../../../Providers/AuthProvider';
+import api from '../../../Routes/baseApi';
 
 const EventList = () => {
 
     const [events, setEvents] = useState([]);
+    const {setUser}= useContext(AuthContext)
+    const navigate = useNavigate();
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/event');
+                const response = await api.get('/event');
                 console.log(response.data.data);
                 setEvents(response.data.data)
             } catch (error) {
@@ -20,12 +28,18 @@ const EventList = () => {
         fetchData();
     }, []);
 
+    const handleLogout = () => {
+        AuthService.logOut();
+        setUser(null)
+        navigate('/')
+    }
+
     return (
         <div className='h-full'>
             <Helmet>
                 <title>VolunteerNow | Events</title>
             </Helmet>
-            <h2 className="bg-white pl-8 py-4 text-2xl font-medium">Event List</h2>
+            <DashboardNav title={'Event List'} handleLogout={handleLogout}></DashboardNav>
             <div className='bg-[#edeff2] rounded-tl-md lg:h-[89%] px-10 pt-8'>
                 <div className="overflow-x-auto bg-white rounded-md p-3">
                     <table className="table table-fixed w-full">

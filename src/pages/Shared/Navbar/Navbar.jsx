@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import icon from '../../../../public/vest.png'
+import { AuthContext } from '../../../Providers/AuthProvider';
+import AuthService from '../../../Utils/auth.utils';
 
 const Navbar = () => {
+
+    const { user, setUser } = useContext(AuthContext);
 
     const links = <>
         <li><NavLink className={({ isActive }) =>
@@ -18,8 +22,15 @@ const Navbar = () => {
         <li><NavLink className={({ isActive }) =>
             isActive ? "border-2 border-lime-600 text-lime-600 font-bold" : ''
         } to='/blog'>Blog</NavLink></li>
-        
+
     </>
+
+    const handleLogout = () => {
+
+        AuthService.logOut();
+        setUser(null)
+        navigate('/')
+    }
 
 
     return (
@@ -59,10 +70,17 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="space-x-2">
-                        <Link to='/login'>
-                            <button className=" bg-lime-600 hover:bg-gray-100 hover:border-2 hover:border-lime-600 hover:text-lime-600 text-white md:text-lg font-bold py-2 px-4 rounded-lg">Login</button></Link>
+                        {
+                            !user ?
+                                <Link to='/login'>
+                                    <button className=" bg-lime-600 hover:bg-gray-100 hover:border-2 hover:border-lime-600 hover:text-lime-600 text-white md:text-lg font-bold py-2 px-4 rounded-lg">Login</button>
+                                </Link>
+                                :
+                                <button onClick={handleLogout} className=" bg-lime-600 hover:bg-gray-100 hover:border-2 hover:border-lime-600 hover:text-lime-600 text-white md:text-lg font-bold py-2 px-4 rounded-lg">Logout</button>
+                        }
                         <Link to='/register'>
-                            <button className=" bg-lime-600 hover:bg-gray-100 hover:border-2 hover:border-lime-600 hover:text-lime-600 text-white md:text-lg font-bold py-2 px-4 rounded-lg">Register</button></Link>
+                            <button className=" bg-lime-600 hover:bg-gray-100 hover:border-2 hover:border-lime-600 hover:text-lime-600 text-white md:text-lg font-bold py-2 px-4 rounded-lg">Register</button>
+                        </Link>
                     </div>
                 </div>
             </div>

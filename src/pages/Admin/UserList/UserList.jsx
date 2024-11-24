@@ -1,21 +1,20 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import api from '../../../Routes/baseApi';
+import { useNavigate } from 'react-router-dom';
+import DashboardNav from '../../Shared/DashboardNav/DashboardNav';
+import AuthService from '../../../Utils/auth.utils';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const UserList = () => {
 
     const [users, setUsers] = useState([]);
+    const {setUser}= useContext(AuthContext)
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get('/user',
-                    {
-                        headers: {
-                            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzMyZjdjNWZiY2M4ZGIyNWI3OWNiNWEiLCJlbWFpbCI6ImFkbWluLmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczMjM0ODU0NCwiZXhwIjoxNzMyMzUyMTQ0fQ.M2-ZTHSA_85DFKUUcezgRPSGtQZOSHcQTVYn7W_uWL0', // Add token here
-                        }
-                    }
-                );
+                const response = await api.get('/user');
                 console.log(response);
                 setUsers(response.data.data)
             } catch (error) {
@@ -27,12 +26,18 @@ const UserList = () => {
     }, []);
     console.log(users);
 
+    const handleLogout = () => {
+        AuthService.logOut();
+        setUser(null)
+        navigate('/')
+    }
+
     return (
         <div className='h-full'>
             <Helmet>
                 <title>VolunteerNow | Users</title>
             </Helmet>
-            <h2 className="bg-white pl-8 py-4 text-2xl font-medium">Users List</h2>
+            <DashboardNav title={'Users List'} handleLogout={handleLogout}></DashboardNav>
             <div className='bg-[#edeff2] rounded-tl-md lg:h-[89%] px-10 pt-3'>
                 <div className='bg-white px-5 py-5 mt-7 rounded-xl'>
                     <div className="overflow-x-auto">
