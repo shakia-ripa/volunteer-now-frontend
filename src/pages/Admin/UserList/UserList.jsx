@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import DashboardNav from '../../Shared/DashboardNav/DashboardNav';
 import AuthService from '../../../Utils/auth.utils';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import profileImg from '../../../../src/assets/images/profile.png'
 
 const UserList = () => {
 
@@ -57,13 +58,13 @@ const UserList = () => {
                                 {
                                     users.map((user, index) => {
                                         return (
-                                            <tr>
+                                            <tr key={index}>
                                                 <td>
                                                     <div className="flex items-center gap-3">
                                                         <div className="avatar">
                                                             <div className="mask mask-squircle h-12 w-12">
                                                                 <img
-                                                                    src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                                                                    src={profileImg}
                                                                     alt="Avatar Tailwind CSS Component" />
                                                             </div>
                                                         </div>

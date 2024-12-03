@@ -64,7 +64,7 @@ const BlogDetail = () => {
                     <p className="text-lg text-gray-700 mb-6">{post.content}</p>
 
                     <button
-                        className="btn btn-outline btn-secondary px-6 py-2 font-medium mt-6"
+                        className="rounded-lg border-2 border-lime-600 text- text-lime-600 px-6 py-2 font-semibold mt-6"
                         onClick={() => window.history.back()}
                     >
                         Back to Blogs

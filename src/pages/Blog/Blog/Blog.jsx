@@ -35,36 +35,49 @@ const Blog = () => {
             <Helmet>
                 <title>VolunteerNow | Blog</title>
             </Helmet>
-            <div className="min-h-screen bg-gray-50 py-10 px-6 md:px-12">
-                <div className="max-w-7xl mx-auto">
-                    <h1 className="text-5xl font-extrabold text-center text-gray-800 mb-12">
-                        Our Latest Blog Posts
-                    </h1>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {posts.map((post, index) => (
-                            <div
-                                key={index}
-                                className="card bg-white shadow-lg rounded-lg overflow-hidden transition-all transform hover:scale-105 hover:shadow-2xl"
-                            >
-                                <div className="card-body p-6">
-                                    <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                                        {post.title}
-                                    </h3>
-                                    <p className="text-sm text-gray-500 mb-3">
-                                        By {post.author} | {post.date}
-                                    </p>
-                                    <p className="text-gray-700 mb-4">
-                                        {post.content.substring(0, 50)}....
-                                    </p>
-                                    <Link to={`/blog/${post.id}`}>
-                                        <button className="btn btn-primary text-white py-2 px-4 rounded-lg transition-colors hover:bg-blue-600">Read More</button>
-                                    </Link>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
+            <div className="min-h-screen bg-gray-50 py-12 px-6 md:px-12">
+  <div className="max-w-7xl mx-auto">
+    {/* Title */}
+    <h1 className="text-5xl font-extrabold text-center text-gray-800 mb-16">
+      Our Latest Blog Posts
+    </h1>
+
+    {/* Blog Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      {posts.map((post, index) => (
+        <div
+          key={index}
+          className="relative bg-white shadow-lg rounded-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+        >
+          {/* Image Section */}
+          <div className="h-48 bg-lime-100">
+            <img
+              src={post.imageUrl || "https://via.placeholder.com/400x300"}
+              alt={post.title}
+              className="h-full w-full object-cover"
+            />
+          </div>
+
+          {/* Content Section */}
+          <div className="p-6">
+            <h3 className="text-2xl font-bold text-gray-800 mb-3">{post.title}</h3>
+            <p className="text-sm text-gray-500 mb-4">
+              By <span className="text-lime-600 font-medium">{post.author}</span> | {post.date}
+            </p>
+            <p className="text-gray-700 mb-6">{post.content.substring(0, 80)}...</p>
+            <Link to={`/blog/${post.id}`}>
+              <button className="inline-block px-6 py-2 text-white bg-lime-500 rounded-lg shadow-md transition-all hover:bg-lime-600 hover:shadow-lg">
+                Read More
+              </button>
+            </Link>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+
         </div>
     );
 };

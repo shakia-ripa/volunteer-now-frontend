@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
@@ -6,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import DashboardNav from '../../Shared/DashboardNav/DashboardNav';
 import AuthService from '../../../Utils/auth.utils';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import api from '../../../Routes/baseApi'
 
 const AddEvent = () => {
     const { setUser } = useContext(AuthContext)
@@ -40,7 +40,7 @@ const AddEvent = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:3000/event', volunteerData);
+            const response = await api.post('/event', volunteerData);
             console.log(response.data.message);
             console.log('Data submitted successfully:', response.data);
             Swal.fire({
@@ -152,43 +152,3 @@ const AddEvent = () => {
 };
 
 export default AddEvent;
-
-
-/**
- * 
- * import { useRef } from 'react';
-import { CloudArrowUpIcon } from '@heroicons/react/24/outline';
-
-function ImageUploadButton() {
-    const fileInputRef = useRef(null);
-
-    const handleClick = () => {
-        fileInputRef.current.click();
-    };
-
-    return (
-        <div className="flex flex-col items-start gap-2">
-            <label className="text-sm font-semibold">Banner</label>
-            <button
-                type="button"
-                onClick={handleClick}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 focus:outline-none"
-            >
-                <CloudArrowUpIcon className="h-5 w-5" />
-                Upload image
-            </button>
-            <input
-                type="file"
-                ref={fileInputRef}
-                accept="image/*"
-                className="hidden"
-                onChange={(e) => console.log(e.target.files[0])} // Handle file upload here
-            />
-        </div>
-    );
-}
-
-export default ImageUploadButton;
-
- * 
- */

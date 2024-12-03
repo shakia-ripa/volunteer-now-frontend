@@ -1,18 +1,15 @@
 import React, { useContext } from 'react';
-import googleicon from '../../assets/images/googleicon.svg';
 import { Link, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from "react-hook-form"
 import AuthService from '../../Utils/auth.utils';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
-
-
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm();
 
@@ -29,6 +26,13 @@ const Login = () => {
         setUser(decodedUser);
 
         if (response && userRole && from === '/') {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Login Successfull!",
+                showConfirmButton: false,
+                timer: 1500
+            });
             navigate(userRole === 'admin' ? '/admin/event-list' : '/user/my-events', { replace: true });
         }
         else {
@@ -81,12 +85,6 @@ const Login = () => {
                         </button>
                     </div>
                 </form>
-                <div className="mt-6">
-                    <button className="w-full border border-gray-300 rounded-full py-2 px-4 flex items-center justify-center shadow-sm hover:bg-gray-100">
-                        <img className="w-5 h-5 mr-3" src={googleicon} alt="Google Icon" />
-                        <span className="text-gray-700 font-medium text-lg">Continue with Google</span>
-                    </button>
-                </div>
                 <p className="mt-6 text-gray-600">
                     Don't have an account?
                     <Link to="/register" className="text-blue-600 underline hover:text-blue-800">

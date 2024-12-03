@@ -33,7 +33,7 @@ const ApplyForm = () => {
                 fullName: response?.data?.data?.name || "",
                 email: response?.data?.data?.email || "",
                 phone: response?.data?.data?.phoneNumber || "",
-                location: response?.data?.data?.division || "",
+                location: response?.data?.data?.location || "",
             });
         }
 

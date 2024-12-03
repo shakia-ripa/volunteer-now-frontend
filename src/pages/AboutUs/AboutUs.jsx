@@ -42,16 +42,16 @@ const AboutUs = () => {
 
                     {/* Section: Meet the Team */}
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-semibold text-gray-900 mb-6">Meet the Team</h2>
+                        {/* <h2 className="text-3xl font-semibold text-gray-900 mb-6">Meet the Team</h2>
                         <p className="text-lg text-gray-600 mb-8">
                             Our team is dedicated to providing you with the best volunteer experience possible. We
                             work tirelessly to ensure that every volunteer finds the perfect opportunity to contribute
                             their time, skills, and energy.
-                        </p>
+                        </p> */}
 
                         {/* Team Members */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <div className="bg-white shadow-lg rounded-lg p-6 border-l-4 border-lime-400">
+                            {/* <div className="bg-white shadow-lg rounded-lg p-6 border-l-4 border-lime-400">
                                 <img
                                     src="https://via.placeholder.com/150"
                                     alt="Team Member 1"
@@ -63,9 +63,9 @@ const AboutUs = () => {
                                     Sarah is passionate about community development and believes in the power of
                                     volunteering to bring about social change.
                                 </p>
-                            </div>
+                            </div> */}
 
-                            <div className="bg-white shadow-lg rounded-lg p-6 border-l-4 border-lime-400">
+                            {/* <div className="bg-white shadow-lg rounded-lg p-6 border-l-4 border-lime-400">
                                 <img
                                     src="https://via.placeholder.com/150"
                                     alt="Team Member 2"
@@ -77,9 +77,9 @@ const AboutUs = () => {
                                     Ahmed oversees the day-to-day operations of the platform and ensures that
                                     volunteers have a seamless experience.
                                 </p>
-                            </div>
+                            </div> */}
 
-                            <div className="bg-white shadow-lg rounded-lg p-6 border-l-4 border-lime-400">
+                            {/* <div className="bg-white shadow-lg rounded-lg p-6 border-l-4 border-lime-400">
                                 <img
                                     src="https://via.placeholder.com/150"
                                     alt="Team Member 3"
@@ -91,7 +91,7 @@ const AboutUs = () => {
                                     Zainab connects with community leaders and organizations to provide volunteers
                                     with the most impactful opportunities.
                                 </p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 

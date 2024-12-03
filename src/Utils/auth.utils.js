@@ -1,9 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 import api from "../Routes/baseApi";
 
-
-
-
 const login = async (email, password) => {
     const response = await api.post('/login', { email, password });
     console.log("After login", response);

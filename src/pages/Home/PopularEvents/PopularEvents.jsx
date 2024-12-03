@@ -11,7 +11,7 @@ const PopularEvents = () => {
         const fetchData = async () => {
             try {
                 const response = await api.get('/event');
-                setEvents(response.data.data)
+                setEvents(response.data.data.slice(0,6))
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
